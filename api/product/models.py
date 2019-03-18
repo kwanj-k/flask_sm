@@ -1,12 +1,11 @@
 from sqlalchemy import (
     Column, String, Integer
 )
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.schema import Sequence
+from helpers.database import Base
+from utilities.utility import Utility
 
-Base = declarative_base()
-
-class Product(Base):
+class Product(Base, Utility):
     __tablename__='products'
     id = Column(Integer, Sequence('products_id_seq', start=1, increment=1), primary_key=True) 
     name = Column(String, nullable=False)
